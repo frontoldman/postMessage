@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function receiveMessage(event)
+    {
+        alert('我收到了消息：' + event.data);
+
+        event.source.postMessage("父窗口，你好！", event.origin);
+    }
+
+    window.addEventListener("message", receiveMessage, false);
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="javascript:void(0)" id="open_id">点击打开新窗口</a>
+
+<script>
+
+    var openId = document.getElementById('open_id');
+
+    openId.onclick = function(){
+
+        var popup = window.open('./test.html');
+
+        setTimeout(function(){
+
+            //这块域名换成你现在的域名
+            popup.postMessage("子窗口，你好",'http://localhost:63342');
+
+
+        },2000)
+
+    }
+
+
+    function receiveMessage(event){
+        alert('我收到了子窗口返回的消息' + event.data)
+
+    }
+
+    window.addEventListener("message", receiveMessage, false);
+
+</script>
+</body>
+</html>
